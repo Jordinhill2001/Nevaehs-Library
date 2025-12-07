@@ -12,14 +12,27 @@ import { getFirestore, doc, setDoc, getDoc, collection, addDoc, onSnapshot, quer
 import { getStorage, ref as storageRef, uploadBytes, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-storage.js";
 
 /* ---------- USER CONFIG: replace this with your Firebase project's settings ---------- */
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "REPLACE_WITH_YOUR_APIKEY",
-  authDomain: "REPLACE.auth.firebaseapp.com",
-  projectId: "REPLACE_PROJECT_ID",
-  storageBucket: "REPLACE_PROJECT_ID.appspot.com",
-  messagingSenderId: "SENDER_ID",
-  appId: "APP_ID"
+  apiKey: "AIzaSyAwP6Wg7TXNLE5KwmFGPFTH-scgDgImHRA",
+  authDomain: "nevaehs-library.firebaseapp.com",
+  projectId: "nevaehs-library",
+  storageBucket: "nevaehs-library.firebasestorage.app",
+  messagingSenderId: "923638298894",
+  appId: "1:923638298894:web:c5ab668b528f8413b8bf5f",
+  measurementId: "G-WPTM7S07Y1"
 };
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 /* ------------------------------------------------------------------------------------- */
 
 // initialize firebase
