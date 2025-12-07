@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Notes Bookshelf — Cloud</title>
-  <link rel="manifest" href="./manifest.json">
+  <title>Notes Bookshelf</title>
+  <!-- Use relative path, not absolute "/" -->
   <link rel="stylesheet" href="./style.css">
+  <link rel="manifest" href="./manifest.json">
 </head>
 <body>
   <header>
@@ -16,34 +17,29 @@
         <option value="modern">Modern</option>
         <option value="dark">Dark</option>
       </select>
-
-      <button id="prevShelfBtn" title="Previous shelf">◀</button>
-      <button id="nextShelfBtn" title="Next shelf">▶</button>
-
-      <button id="newNoteBtn">+ New</button>
-      <button id="optionsBtn">⚙️</button>
-      <button id="authBtn">Sign in</button>
+      <button id="newNoteBtn">+ New Note</button>
+      <button id="archiveBtn" style="display:none">Archive bookshelf</button>
+      <button id="viewArchivesBtn">Archives</button>
     </div>
   </header>
 
   <main>
-    <!-- Swipe container: each bookshelf is a horizontal page -->
-    <div id="swipeContainer" class="swipe-container" touch-action="pan-y">
-      <!-- shelves/pages inserted by JS -->
-    </div>
+    <section id="bookshelfContainer">
+      <!-- shelves rendered here -->
+    </section>
   </main>
 
-  <!-- Modal: New/Edit Note -->
+  <!-- Modal: New Note -->
   <div id="modal" class="modal hidden" aria-hidden="true">
     <div class="modal-content">
-      <h2 id="modalTitle">Create Note</h2>
+      <h2>Create Note</h2>
       <label>Title
-        <input id="noteTitle" type="text" maxlength="120">
+        <input id="noteTitle" type="text" placeholder="Short title" maxlength="80">
       </label>
       <label>Body
-        <textarea id="noteBody" rows="6"></textarea>
+        <textarea id="noteBody" rows="6" placeholder="Write your note..."></textarea>
       </label>
-      <label>Add PNG / Photo
+      <label>Add PNG (camera roll)
         <input id="imageInput" type="file" accept="image/*" />
       </label>
       <div class="modal-actions">
@@ -54,50 +50,12 @@
     </div>
   </div>
 
-  <!-- Options modal -->
-  <div id="optionsModal" class="modal hidden" aria-hidden="true">
-    <div class="modal-content">
-      <h2>Options</h2>
-      <label>Thumbnail max width (px)
-        <input id="optThumbWidth" type="number" min="64" max="200" value="150">
-      </label>
-      <label>Image quality (0.1–1.0)
-        <input id="optQuality" type="number" step="0.05" min="0.2" max="1" value="0.8">
-      </label>
-      <label>Auto-create new bookshelf when full
-        <input id="optAutoNew" type="checkbox" checked />
-      </label>
-      <label>Enable Cloud Sync (Firebase)
-        <input id="optSync" type="checkbox" checked />
-      </label>
-      <div class="modal-actions">
-        <button id="saveOptionsBtn">Save</button>
-        <button id="closeOptionsBtn">Close</button>
-      </div>
-    </div>
-  </div>
+  <!-- Archive / Archives modal if you use them -->
+  <!-- ... -->
 
-  <!-- Auth modal -->
-  <div id="authModal" class="modal hidden" aria-hidden="true">
-    <div class="modal-content">
-      <h2>Sign In</h2>
-      <label>Email
-        <input id="authEmail" type="email">
-      </label>
-      <label>Password
-        <input id="authPassword" type="password">
-      </label>
-      <div class="modal-actions">
-        <button id="authSignInBtn">Sign In / Register</button>
-        <button id="authCloseBtn">Close</button>
-      </div>
-      <small id="authMessage"></small>
-    </div>
-  </div>
+  <div id="statusBar"> </div>
 
-  <div id="statusBar"></div>
-
-  <!-- firebase SDK will be loaded by app.js (modular v9 style) -->
-  <script src="./app-cloud.js" type="module"></script>
+  <!-- Load your JS script with relative path -->
+  <script type="module" src="./app.js"></script>
 </body>
 </html>
